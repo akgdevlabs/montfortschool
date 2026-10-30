@@ -1,11 +1,7 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
-// Purani line hatao
-// Nayi line likho:
 import { PrismaClient } from './app/generated/prisma/client';
-
-// (Agar aap auth.ts mein lib/prisma se import kar rahe ho, toh usko change karne ki zarurat nahi hai, bas lib/prisma.ts theek hona chahiye).
 import { PrismaPg } from "@prisma/adapter-pg";
 
 // Direct Prisma Initialize
@@ -14,6 +10,8 @@ const prisma = new PrismaClient({ adapter });
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   trustHost: true, 
+  secret: process.env.AUTH_SECRET, // <--- YEH LINE SABSE ZARURI HAI
+  
   providers: [
     CredentialsProvider({
       name: "Credentials",
