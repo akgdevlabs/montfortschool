@@ -1,5 +1,7 @@
 import 'dotenv/config'
-import { PrismaClient } from '@prisma/client'
+// Purani line hatao: import { PrismaClient } from '@prisma/client';
+// Nayi line likho:
+import { PrismaClient } from '../app/generated/prisma/client';
 import { PrismaPg } from '@prisma/adapter-pg'
 
 const globalForPrisma = globalThis as unknown as {

@@ -1,7 +1,11 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
-import { PrismaClient } from "@prisma/client";
+// Purani line hatao
+// Nayi line likho:
+import { PrismaClient } from './app/generated/prisma/client';
+
+// (Agar aap auth.ts mein lib/prisma se import kar rahe ho, toh usko change karne ki zarurat nahi hai, bas lib/prisma.ts theek hona chahiye).
 import { PrismaPg } from "@prisma/adapter-pg";
 
 // Direct Prisma Initialize
